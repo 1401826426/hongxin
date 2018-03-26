@@ -1,0 +1,14 @@
+{
+  "pages":[
+    "pages/create_order/create_order",
+    "pages/loginV2/index",
+    "pages/my/index",
+    "pages/order-list/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}
