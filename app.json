@@ -1,8 +1,9 @@
 {
   "pages":[
-    "pages/create_order/create_order",
     "pages/loginV2/index",
     "pages/my/index",
+    "pages/create_order/create_order",
+    
     "pages/order-list/index"
   ],
   "window":{

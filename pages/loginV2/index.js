@@ -17,20 +17,20 @@ Page({
 
     console.log('onLoad')
     var that = this
-  	//登录
-    wx.login({
-      success: function () {
-        wx.getUserInfo({
-          success: function (res) {
-            that.setData({userInfo: res.userInfo})
-            that.update()
-          }
-        })
-      },
-      fail: function (res) {
-        console.log(res)
-      }
-    });
+  	// //登录
+    // wx.login({
+    //   success: function () {
+    //     wx.getUserInfo({
+    //       success: function (res) {
+    //         that.setData({userInfo: res.userInfo})
+    //         that.update()
+    //       }
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     console.log(res)
+    //   }
+    // });
   },
   //事件处理函数
   bindViewTap: function() {
@@ -97,9 +97,15 @@ Page({
           })
           if(e.statusCode == 200){
             app.globalData.user=e.data ;
+            app.globalData.session=e.data.sessionId ; 
             console.log(e.data)  
             wx.navigateTo({
               url: '../my/index',
+            })
+          }else{
+            wx.showModal({
+              title: '登录出错',
+              content: '登录出错',
             })
           }
         }

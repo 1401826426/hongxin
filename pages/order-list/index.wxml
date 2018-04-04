@@ -12,28 +12,47 @@
     <view class="order-list" hidden="{{orderList ? false : true}}">
         <view class="a-order" wx:for-items="{{orderList}}" wx:key="{{index}}">
             <view class="order-date">
-                <view class="date-box">下单时间：{{item.dateAdd}}</view>
+                <view class="date-box">下单时间：{{item.createTimeString}}</view>
                 <view class="status {{(item.status==-1 || item.status==4) ? '':'red'}}">{{item.statusStr}}</view>
             </view>
             <view class="goods-info" bindtap="orderDetail" data-id="{{item.id}}">
                 <view class="goods-des">
                    <view>订单号:{{item.orderNumber}} </view>
-                   <view wx:if="{{item.remark && item.remark != ''}}">备注： {{item.remark}}</view>
+                   <view wx:if="{{item.buyUserName && item.buyUserName != ''}}">买家： {{item.buyUserName}}</view>
+                   <view wx:if="{{item.adminName && item.adminName != ''}}">管理员： {{item.adminName}}</view>
+                   <view wx:if="{{item.sellUserName && item.sellUserName != ''}}">卖家： {{item.sellUserName}}</view>
+                   <view wx:if="{{item.orderContend && item.orderContend != ''}}">描述： {{item.orderContend}}</view>
+                   <view wx:if="{{item.trackingNumber && item.trackingNumber != ''}}">快递单号： {{item.trackingNumber}}</view>
                 </view>
+
             </view>
             <view >
                 <scroll-view class="goods-img-container" scroll-x="true">
-                    <view class="img-box" wx:for-items="{{goodsMap[item.id]}}" wx:key="{{index}}">
-                        <image src="{{item.pic}}" class="goods-img"></image>
+                    <view class="img-box" wx:for="{{item.pics}}" 
+                    wx:for-item="pic" wx:key="{{index}}">
+                        <image src="{{pic}}" class="goods-img"></image>
                     </view>
                 </scroll-view>
             </view>
-            <view class="price-box">
-                <view class="total-price">合计：¥ {{item.amountReal}}</view>
-                <view class="btn cancel-btn" hidden="{{item.status==0? fslse : true}}" bindtap="cancelOrderTap"  data-id="{{item.id}}">取消订单</view>
-                <view class="btn topay-btn" hidden="{{item.status==0? fslse : true}}" bindtap="toPayTap" data-id="{{item.id}}" data-money="{{item.amountReal}}">马上付款</view>        
-            </view>  
-        </view>
+             
+    
+                 <!-- <view class="btn cancel-btn"bindtap="cancelOrderTap"  data-id="{{item.id}}">确认收货</view>  -->
+                 <view wx:if="{{user.id == item.adminUserId && item.state==1}}" class="price-box">
+                 <input type="text" bindinput="bindValueInput" bindblur="numChange" placeholder="卖家名字" placeholder-class="ph" />
+                 <view class="btn topay-btn" bindtap="toPayTap" 
+                data-id="{{item.id}}" data-type = "1">确认付款</view>
+                 </view>
+                 
+                  <view wx:if="{{user.id == item.sellUserId && item.state==2}}" class="price-box">
+                 <input type="text" bindinput="bindValueInput" bindblur="numChange" placeholder="快递单号" placeholder-class="ph" />
+                 <view class="btn topay-btn" bindtap="toPayTap" 
+                data-id="{{item.id}}"data-type = "2" >确认发货</view>
+                 </view>
 
+                <view wx:if="{{user.id == item.buyUserId && item.state==3}}" class="price-box">
+                 <view class="btn topay-btn" bindtap="toPayTap" 
+                data-id="{{item.id}}" data-type = "3">确认收货</view>
+                 </view>
+        </view>
     </view>
 </view>

@@ -6,7 +6,7 @@ icon {
   vertical-align: middle;
 }
 .weui-cell {
-  padding: 10px 15px;
+  padding: 0px 1px;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -79,3 +79,38 @@ icon {
   height: 100%;
   opacity: 0;
 } 
+
+.tip-photo{
+  height: 50rpx;
+  width: 150rpx;
+  background-color: #fe4c40;
+  color: #fff;
+  font-size: 35rpx;
+  border-radius: 0rpx 35rpx 35rpx 0rpx;
+  padding: 10rpx 15rpx 10rpx 30rpx;
+  background: linear-gradient(to  right, #fe8300 , #fe4c40);
+}
+
+.inputRemark{
+    float: right;
+    font-size: 35rpx;
+    width:100%;
+    padding: 0rpx 15rpx 0rpx 15rpx;
+}
+
+.inputRemark textarea{
+  width:95%;
+}
+.submitButton{  
+  width:80%;
+  height:90rpx;
+  background-color:#fe4c40;
+  border-radius:30px;
+  color:#fff;
+  margin: auto;
+  margin-bottom: 30rpx;
+  display:flex;
+    justify-content:center;
+    align-items:center;
+
+}

@@ -1,10 +1,17 @@
+
+<form bindsubmit="registerSuccess" report-submit="true">
+<view class="tip-photo" style='margin:40rpx 0rpx 40rpx 0rpx;'>订单详情</view>
+
+<view class="column" style="position:relative;height:300rpx;      border-radius:0rpx;border: 1rpx dashed  #fe4c40;">
+            <view class="inputRemark" style="position:absolute; top:15rpx;padding-top:30rpx;">
+                        <textarea  maxlength="500"  name="remark" placeholder="订单详情描述"  placeholder-style="color:#969696" />
+                    </view>
+        </view>
+        
+<view class="tip-photo" style='margin:40rpx 0rpx 40rpx 0rpx;'>支付凭证</view>
 <view class="weui-cell">
   <view class="weui-cell__bd">
     <view class="weui-uploader">
-      <view class="weui-uploader__hd">
-        <view class="weui-uploader__title">点击可预览选好的图片</view>
-        <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
-      </view>
       <view class="weui-uploader__bd">
         <view class="weui-uploader__files">
           <block wx:for="{{imageList}}" wx:for-item="image">
@@ -20,3 +27,7 @@
     </view>
   </view>
 </view>
+
+ 
+           <button  class="submitButton"  formType="submit" style='margin-top:30rpx;'>提交</button >
+</form>
