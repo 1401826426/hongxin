@@ -3,18 +3,21 @@
 <view class="container">
   <image src="../../images/logo.png" mode="aspectFit" class="logo"></image>
 
-  <view class="signTitle">鸿达耗材订单系统</view>
+  <view class="signTitle">
+     <view class = "comp">鸿达基团</view>
+     <view class = "name">订单管理系统</view>
+  </view>
   <view class="whiteLine"></view>
 
   <block>
     <block>
       <icon class="numWaring" style="display: {{numShow}}" type="cancel"></icon>
     </block>
-    <input type="text" bindinput="bindNumInput" bindblur="numChange" placeholder="账号" placeholder-class="ph" />
+    <input type="text" bindinput="bindNumInput" bindblur="numChange" placeholder="账号" placeholder-class="ph" focus='{{numFos}}' />
     <block>
       <icon class="psdWaring" style="display: {{psdShow}}" type="cancel"></icon>
     </block>
-    <input type="text" bindinput="bindPsdInput" bindblur="psdChange" placeholder="密码" placeholder-class="ph" password="true"/>
+    <input type="text" bindinput="bindPsdInput" bindblur="psdChange" placeholder="密码" placeholder-class="ph" password="true" focus='{{passFocs}}'/>
   </block>
 
   <button class="loginBtn" bindtap="loginSubmit" plain="true" hover-class="btnHover">登录</button>

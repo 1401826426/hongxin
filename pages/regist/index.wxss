@@ -1,33 +1,111 @@
+/**index.wxss**/
 
-/*.myprogress{margin:5px 0}*/
-.content{text-align: center}
-.logo{margin-top: 100rpx;margin-bottom: 120rpx}
-.logo image{width:400rpx;height: 60rpx}
-.input-area{
-    background-color: #fff;
-    text-align: left;
-    padding-left: 10%;
-    border-bottom:1px solid #ddd;
-    border-top:1px solid #ddd
+.container {
+  opacity: 0.75;
+  background: -webkit-linear-gradient(top, #330033 0%,#CCCCCC 100%);
+  background: -o-linear-gradient(top, #330033 0%,#CCCCCC 100%);
+  background: -ms-linear-gradient(top, #330033 0%,#CCCCCC 100%);
+  background: linear-gradient(to bottom, #330033 0%,#99CCFF 100%);
+  font-family: 'track'!important;
 }
-.input-area input{height:100rpx;line-height: 100rpx;}
-#username{border-bottom:1px solid #ddd}
-.btn-area{width: 80%;margin: 0 auto}
-.btn-area button{
-    /*background-color: #ff9900;*/
-    margin-top: 40rpx;
-    color: #fff
-}
-.txt-area{
-    margin-top: 30rpx;
-    display: flex;
-    justify-content:space-between;
-    font-size: 30rpx
-}
-.forgot-password{color: #888}
-.register{color:#ff9900}
-.forgot-password:active,.register:active{opacity: 0.7}
 
-.smsCode{display: flex;justify-content:space-between;border-bottom: 1px solid #ddd;padding-right: 10%}
-.smsCode input{width: 336rpx;}
-.smsCode .getSmsCodeBtn{font-size: 30rpx; color:#fff;width:216rpx;box-sizing: border-box; height: 80rpx;line-height: 80rpx;margin-top: 10rpx;margin-right: 0}
+.bgImg {
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.logo {
+  margin-top: 100rpx ;
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.signTitle {
+  color: #fff;
+  display: flex;
+  margin: 50rpx 0 30rpx 0;
+}
+
+.whiteLine { 
+  height: 5rpx;
+  background-color: #fff;
+  width: 60%;
+  border-radius: 20rpx;
+}
+
+input {
+  color: #fff;
+  width: 70%;
+  height: 80rpx;
+  border: 3rpx #fff solid;
+  border-radius: 10rpx;
+  margin-top: 50rpx;
+  padding: 5rpx 15rpx;
+}
+
+.ph {
+  color: #eee;
+}
+
+.numWaring {
+  position: fixed;
+  right: 50rpx;
+  top: 585rpx;
+}
+
+.psdWaring {
+  position: fixed;
+  right: 50rpx;
+  top: 715rpx;
+}
+
+.num-true {
+  display: inherit;
+}
+.num-false {
+  display: none;
+}
+.psd-true {
+  display: inherit;
+}
+.psd-false {
+  display: none;
+}
+
+.loginBtn {
+  width: 68%;
+  height: 90rpx;
+  margin-top: 50rpx;
+  line-height: 90rpx ;
+  border: 5rpx #fff solid!important;
+  color: #fff!important;
+}
+
+.btnHover {
+  /* opacity: 0.5; */
+  background-color: #eee;
+}
+
+.newAlert {
+  padding: 15rpx 30rpx;
+  display: block;
+  text-align: center;
+}
+
+.info {
+  color: #fff;
+  font-size: 25rpx;
+  margin-top: 50rpx;
+  text-decoration: underline;
+}
+
+.footer {
+  display: flex;
+  position: fixed;
+  color: #fff!important;
+  bottom: 10rpx;
+  font-size: 22rpx;
+}

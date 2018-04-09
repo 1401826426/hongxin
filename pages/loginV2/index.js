@@ -10,7 +10,9 @@ Page({
     psdShow: 'none',
     modelInnerHtml: '123',
     loadingHidden: true,
-    modalHidden: true
+    modalHidden: true,
+    numFos: false , 
+    passFocs:false 
   },
   onLoad: function () {
     // common.sayHello()
@@ -41,6 +43,7 @@ Page({
   // 账号修改
   bindNumInput: function(e) {
     this.setData({
+      numFos: true, 
       numShow: 'none',
       phonenumber: e.detail.value
     })
@@ -48,6 +51,7 @@ Page({
   // 密码修改
   bindPsdInput: function(e) {
     this.setData({
+      passFocs:true ,      
       psdShow: 'none',
       password: e.detail.value
     })
@@ -105,7 +109,7 @@ Page({
           }else{
             wx.showModal({
               title: '登录出错',
-              content: '登录出错',
+              content: '账号或密码错误,或账号未激活',
             })
           }
         }
@@ -141,10 +145,8 @@ Page({
   },
   // 点击找回密码
   RandP: function() {
-    this.setData({
-        modelInnerHtml: '暂不支持注册和密码找回',
-        modalHidden:  false
-      })
-    console.log("暂不支持注册和密码找回")
+    wx.navigateTo({
+      url: '../regist/index',
+    })
   }
 })

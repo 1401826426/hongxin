@@ -1,162 +1,177 @@
-var util = require("../../utils/util.js");
-
+//index.js//获取应用实例
+var app = getApp()
 Page({
-  data:{
-    registBtnTxt:"注册",
-    registBtnBgBgColor:"#ff9900",
-    getSmsCodeBtnTxt:"获取验证码",
-    getSmsCodeBtnColor:"#ff9900",
-    // getSmsCodeBtnTime:60,
-    btnLoading:false,
-    registDisabled:false,
-    smsCodeDisabled:false,
-    inputUserName: '',
-    inputPassword: '',
-    phoneNum: ''
+  data: {
+    phonenumber: '',
+    password: '',
+    mail:'',
+    numShow: 'none',
+    psdShow: 'none',
+    modelInnerHtml: '123',
+    loadingHidden: true,
+    modalHidden: true,
+    numFos: false,
+    passFocs: false,
+    mailFocs:false ,
   },
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
-    
-  },
-  onReady:function(){
-    // 页面渲染完成
-    
-  },
-  onShow:function(){
-    // 页面显示
-    
-  },
-  onHide:function(){
-    // 页面隐藏
-    
-  },
-  onUnload:function(){
-    // 页面关闭
-    
-  },
-  formSubmit:function(e){
-    var param = e.detail.value;
-    this.mysubmit(param);
-  },
-  mysubmit:function (param){
-    var flag = this.checkUserName(param.username)&&this.checkPassword(param)&&this.checkSmsCode(param)
-    var that = this;
-    if(flag){
-        this.setregistData1();
-        setTimeout(function(){
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 1500
-          });
-          that.setregistData2();
-          that.redirectTo(param);
-        },2000);
-    } 
-  },
-  getPhoneNum:function(e){
-   var value  = e.detail.value;
-   this.setData({
-    phoneNum: value     
-   });
-  },
-  setregistData1:function(){
-    this.setData({
-      registBtnTxt:"注册中",
-      registDisabled: !this.data.registDisabled,
-      registBtnBgBgColor:"#999",
-      btnLoading:!this.data.btnLoading
-    });
-  },
-  setregistData2:function(){
-    this.setData({
-      registBtnTxt:"注册",
-      registDisabled: !this.data.registDisabled,
-      registBtnBgBgColor:"#ff9900",
-      btnLoading:!this.data.btnLoading
-    });
-  },
-  checkUserName:function(param){ 
-    var phone = util.regexConfig().phone;
-    var inputUserName = param.trim();
-    if(phone.test(inputUserName)){
-      return true;
-    }else{
-      wx.showModal({
-        title: '提示',
-        showCancel:false,
-        content: '请输入正确的手机号码'
-      });
-      return false;
-    }
-  },
-  checkPassword:function(param){
-    var userName = param.username.trim();
-    var password = param.password.trim();
-    if(password.length<=0){
-      wx.showModal({
-        title: '提示',
-        showCancel:false,
-        content: '请设置密码'
-      });
-      return false;
-    }else if(password.length<6||password.length>20){
-      wx.showModal({
-        title: '提示',
-        showCancel:false,
-        content: '密码长度为6-20位字符'
-      });
-      return false;
-    }else{
-      return true;
-    }
-  },
-  getSmsCode:function(){
-    var phoneNum = this.data.phoneNum;
-    var that = this;
-    var count = 60;
-    if(this.checkUserName(phoneNum)){
-      var si = setInterval(function(){
-      if(count > 0){
-        count--;
-        that.setData({
-          getSmsCodeBtnTxt:count+' s',
-          getSmsCodeBtnColor:"#999",
-          smsCodeDisabled: true
-        });
-      }else{
-        that.setData({
-          getSmsCodeBtnTxt:"获取验证码",
-          getSmsCodeBtnColor:"#ff9900",
-          smsCodeDisabled: false
-        });
-          count = 60;
-          clearInterval(si);
-        }
-      },1000);
-    }
-    
-  },
-  checkSmsCode:function(param){
-    var smsCode = param.smsCode.trim();
-    var tempSmsCode = '000000';//演示效果临时变量，正式开发需要通过wx.request获取
-    if(smsCode!=tempSmsCode){
-      wx.showModal({
-        title: '提示',
-        showCancel:false,
-        content: '请输入正确的短信验证码'
-      });
-      return false;
-    }else{
-      return true;
-    }
-  },
-  redirectTo:function(param){
-    //需要将param转换为字符串
-    param = JSON.stringify(param);
-    wx.redirectTo({
-      url: '../main/index?param='+ param//参数只能是字符串形式，不能为json对象
-    })
-  }
+  onLoad: function () {
+    // common.sayHello()
 
+    console.log('onLoad')
+    var that = this
+    // //登录
+    // wx.login({
+    //   success: function () {
+    //     wx.getUserInfo({
+    //       success: function (res) {
+    //         that.setData({userInfo: res.userInfo})
+    //         that.update()
+    //       }
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     console.log(res)
+    //   }
+    // });
+  },
+  //事件处理函数
+  bindViewTap: function () {
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
+  },
+  // 账号修改
+  bindNumInput: function (e) {
+    this.setData({
+      numFos: true,
+      numShow: 'none',
+      phonenumber: e.detail.value
+    })
+  },
+  // 密码修改
+  bindPsdInput: function (e) {
+    this.setData({
+      passFocs: true,
+      psdShow: 'none',
+      password: e.detail.value
+    })
+  },
+  bindMailInput: function (e) {
+    this.setData({
+      mailFocs: true,
+      psdShow: 'none',
+      mail: e.detail.value
+    })
+  },
+  
+  mailChange:function(e){
+
+  },
+  // 账号失去焦点
+  numChange: function () {
+    if (this.data.phonenumber == '') {
+      this.setData({
+        numShow: '',
+        psdShow: 'none'
+      })
+    }
+  },
+  // 密码失去焦点
+  psdChange: function () {
+    if (this.data.password == '') {
+      this.setData({
+        numShow: 'none',
+        psdShow: ''
+      })
+    }
+  },
+  // 弹窗消失
+  modalChange: function () {
+    this.setData({
+      modalHidden: true
+    })
+  },
+  // 点击提交按钮
+  loginSubmit: function (e) {
+    if (this.data.phonenumber != '' && this.data.password != '' && this.data.mail != '') {
+      this.setData({
+        numShow: 'none',
+        psdShow: 'none',
+        loadingHidden: false
+      })
+      var that = this
+      wx.request({
+        url: app.globalData.domain + "/register",
+        data: {
+          name: that.data.phonenumber,
+          password: that.data.password,
+          mail:that.data.mail 
+        },
+        success: function (e) {
+          that.setData({
+            loadingHidden: true
+          })
+          if (e.statusCode == 200) {
+            wx.showModal({
+              title: '注册成功,请去确认邮箱',
+              content: '注册成功',
+              success: function (res) {
+                wx.navigateTo({
+                  url: '../loginV2/index'
+                })
+              }
+            })
+          } else if(e.statusCode == 400){
+            wx.showModal({
+              title: '注册出错',
+              content: e.data
+            })
+          }else{
+            wx.showModal({
+              title: '注册出错',
+              content: '注册出错'
+            })
+          }
+        }
+      })
+    } else if (this.data.phonenumber == '' && this.data.password != '') {
+      this.setData({
+        numShow: '',
+        psdShow: 'none',
+        modelInnerHtml: '账号不能为空',
+        modalHidden: false
+      })
+
+    } else if (this.data.password == '' && this.data.phonenumber != '') {
+      this.setData({
+        numShow: 'none',
+        psdShow: '',
+        modelInnerHtml: '密码不能为空',
+        modalHidden: false
+      })
+
+    }else if(this.data.mail == ''){
+      this.setData({
+        numShow: 'none',
+        psdShow: '',
+        modelInnerHtml: '邮箱不能为空',
+        modalHidden: false
+      })
+    } else {
+      this.setData({
+        numShow: '',
+        psdShow: '',
+        modelInnerHtml: '账号密码不能为空',
+        modalHidden: false
+      })
+    }
+  },
+  // 点击找回密码
+  RandP: function () {
+    this.setData({
+      modelInnerHtml: '暂不支持注册和密码找回',
+      modalHidden: false
+    })
+    console.log("暂不支持注册和密码找回")
+  }
 })

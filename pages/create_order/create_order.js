@@ -112,16 +112,23 @@ Page({
       method:"POST" , 
       success:function(e){
         wx.hideLoading()
-        wx.showModal({
-          title: '创建成功',
-          content: '创建成功',
-          showCancel: false,
-          success: function (res) {
-            wx.navigateTo({
-              url: '../my/index'
-            })
-          }
-        })
+        if(e.statusCode == 200){
+          wx.showModal({
+            title: '创建成功',
+            content: '创建成功',
+            showCancel: false,
+            success: function (res) {
+              wx.navigateTo({
+                url: '../my/index'
+              })
+            }
+          })
+        }else if(e.statusCode == 403){
+          wx.navigateTo({
+            url: '../loginV2/index',
+          })
+        }
+        
       }
     })
   }

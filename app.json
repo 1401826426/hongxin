@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/regist/index",
     "pages/loginV2/index",
+    "pages/regist/index",
     "pages/my/index",
     "pages/create_order/create_order",
     

@@ -32,7 +32,7 @@
 .whiteLine { 
   height: 5rpx;
   background-color: #fff;
-  width: 40%;
+  width: 60%;
   border-radius: 20rpx;
 }
 

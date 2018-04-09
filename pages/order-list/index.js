@@ -69,7 +69,10 @@ Page({
           that.setData({
             orderList: list
           })
-          
+        }else if(res.statusCode == 403){
+          wx.navigateTo({
+            url: '../loginV2/index',
+          })
         }
       }
     })
@@ -147,6 +150,18 @@ Page({
               });
               that.onShow();
             }
+          })
+        } else if (e.statusCode == 400){
+          wx.showModal({
+            title: '失败',
+            content: e.data.msg,
+            showCancel: false,
+            success: function (res) {
+            }
+          })
+        }else if(e.statusCode == 403){
+          wx.navigateTo({
+            url: '../loginV2/index',
           })
         }
       }
