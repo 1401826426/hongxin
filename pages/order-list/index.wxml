@@ -13,16 +13,30 @@
         <view class="a-order" wx:for-items="{{orderList}}" wx:key="{{index}}">
             <view class="order-date">
                 <view class="date-box">下单时间：{{item.createTimeString}}</view>
-                <view class="status {{(item.status==-1 || item.status==4) ? '':'red'}}">{{item.statusStr}}</view>
             </view>
             <view class="goods-info" bindtap="orderDetail" data-id="{{item.id}}">
                 <view class="goods-des">
-                   <view>订单号:{{item.orderNumber}} </view>
-                   <view wx:if="{{item.buyUserName && item.buyUserName != ''}}">买家： {{item.buyUserName}}</view>
-                   <view wx:if="{{item.adminName && item.adminName != ''}}">管理员： {{item.adminName}}</view>
-                   <view wx:if="{{item.sellUserName && item.sellUserName != ''}}">卖家： {{item.sellUserName}}</view>
-                   <view wx:if="{{item.orderContend && item.orderContend != ''}}">描述： {{item.orderContend}}</view>
-                   <view wx:if="{{item.trackingNumber && item.trackingNumber != ''}}">快递单号： {{item.trackingNumber}}</view>
+                   <view class = "ccc">
+                   <view class = "title">订单号：</view>
+                   <view class = "content">{{item.orderNumber}}</view> 
+                   </view>
+                   <view class = "ccc" wx:if="{{item.buyUserName && item.buyUserName != ''}}">
+                   <view class = "title">买家：</view> <view class = "content">{{item.buyUserName}}</view></view>
+                   <view class = "ccc" wx:if="{{item.adminName && item.adminName != ''}}">
+                   <view class = "title">管理员：</view> 
+                   <view class = "content">{{item.adminName}}</view>
+                   </view>
+                   <view class = "ccc" wx:if="{{item.sellUserName && item.sellUserName != ''}}">
+                   <view class = "title">卖家：</view> 
+                   <view class = "content">{{item.sellUserName}}</view>
+                   </view>
+                   <view class = "ccc" wx:if="{{item.orderContend && item.orderContend != ''}}">
+                   <view class = "title">描述：</view> 
+                   <view class = "content">{{item.orderContend}}</view>
+                   </view>
+                   <view class = "ccc" wx:if="{{item.trackingNumber && item.trackingNumber != ''}}"><view class = "title">快递单号：</view> 
+                   <view class ="content">{{item.trackingNumber}}</view>
+                   </view>
                 </view>
 
             </view>

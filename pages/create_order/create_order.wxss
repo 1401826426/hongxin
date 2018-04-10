@@ -95,11 +95,14 @@ icon {
     float: right;
     font-size: 35rpx;
     width:100%;
-    padding: 0rpx 15rpx 0rpx 15rpx;
+    height:290rpx;
 }
 
 .inputRemark textarea{
-  width:95%;
+  margin-left:2%;
+  margin-right:2%;
+  width: 96%;  
+  height:280rpx;
 }
 .submitButton{  
   width:80%;

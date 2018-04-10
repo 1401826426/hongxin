@@ -36,16 +36,19 @@
   border-radius: 20rpx;
 }
 
-input {
+.input {
   color: #fff;
   width: 70%;
-  height: 80rpx;
+  height: 100rpx;
+  margin-top: 50rpx;
+  
+}
+.input input{
   border: 3rpx #fff solid;
   border-radius: 10rpx;
-  margin-top: 50rpx;
-  padding: 5rpx 15rpx;
+  
+  padding: 15rpx 15rpx; 
 }
-
 .ph {
   color: #eee;
 }

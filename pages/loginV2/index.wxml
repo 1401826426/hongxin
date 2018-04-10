@@ -4,7 +4,7 @@
   <image src="../../images/logo.png" mode="aspectFit" class="logo"></image>
 
   <view class="signTitle">
-     <view class = "comp">鸿达基团</view>
+     <view class = "comp">鸿达集团</view>
      <view class = "name">订单管理系统</view>
   </view>
   <view class="whiteLine"></view>

@@ -3,17 +3,20 @@
 <view class="container">
   <image src="../../images/logo.png" mode="aspectFit" class="logo"></image>
  <view class="signTitle">
-     <view class = "comp">鸿达基团</view>
+     <view class = "comp">鸿达集团</view>
      <view class = "name">订单管理系统</view>
   </view>
   <view class="whiteLine"></view>
   <block>
+    <view class = "input">
     <input type="text" bindinput="bindNumInput" bindblur="numChange" placeholder="账号" placeholder-class="ph" focus='{{numFos}}' />
-
+    </view>
+    <view class = "input">
     <input type="text" bindinput="bindMailInput" bindblur="mailChange" placeholder="邮箱" placeholder-class="ph" focus='{{mailFocs}}' />
-
+</view>
+    <view class = "input">
     <input type="text" bindinput="bindPsdInput" bindblur="psdChange" placeholder="密码" placeholder-class="ph" password="true" focus='{{passFocs}}'/>
-
+</view>
   </block>
 
   <button class="loginBtn" bindtap="loginSubmit" plain="true" hover-class="btnHover">注册</button>
