@@ -26,7 +26,7 @@
                 </view>
 
             </view>
-            <view >
+            <view wx:if="{{user.id != item.sellUserId}}">
                 <scroll-view class="goods-img-container" scroll-x="true">
                     <view class="img-box" wx:for="{{item.pics}}" 
                     wx:for-item="pic" wx:key="{{index}}">
